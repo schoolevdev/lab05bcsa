@@ -497,7 +497,7 @@ class Pc {
                 .append(ram.getPrice())
                 .append("\n\tSpeed: ")
                 .append(ram.getSpeed())
-                .append("mHz\n\tSize: ")
+                .append("mT/s\n\tSize: ")
                 .append(ram.getSize())
                 .append("GB\n\tCAS Latency: ")
                 .append(ram.getLatency())
@@ -579,7 +579,7 @@ class Pc {
 class Cpu {
     private final double price;
     private final String name;
-    private final double clockSpeed;
+    private final double clockSpeed; //the speed of the internal CPU clock, in GHz
     private final int wattage;
 
     Cpu(double price, String name, double clockSpeed, int wattage) {
@@ -611,11 +611,11 @@ class Cpu {
 class Cooler {
     private final double price;
     private final String name;
-    private final int minRpm;
+    private final int minRpm; // min and max speeds both in RPM
     private final int maxRpm;
-    private final double noiseLevel;
+    private final double noiseLevel; // in db
     private final String color; //I don't feel like making a color enum rn tbh
-    private final int height;
+    private final int height; // in mm
 
     Cooler(double price, String name, int minRpm, int maxRpm, double noiseLevel, String color, int height) {
         this.price = price;
@@ -659,11 +659,11 @@ class Cooler {
 class Motherboard {
     private final double price;
     private final String name;
-    private final String socket;
-    private final String formFactor;
-    private final String chipset;
+    private final String socket; //AM4, AM5, LGA1700, etc
+    private final String formFactor; //ATX, MATX, ITX, etc
+    private final String chipset; //Z790, B650, etc
     private final boolean hasBuiltInWifi;
-    private final String memoryType;
+    private final String memoryType; //DDR5 or DDR4
 
     Motherboard(double price, String name, String socket, String formFactor, String chipset, boolean hasBuiltInWifi, String memoryType) {
         this.price = price;
@@ -708,9 +708,9 @@ class Motherboard {
 class Ram {
     private final double price;
     private final String name;
-    private final int speed;
-    private final int size;
-    private final int latency;
+    private final int speed; //MT per S
+    private final int size; //GB
+    private final int latency; //CAS LATENCY, ms
     private final String color;
 
     Ram(double price, String name, int speed, int size, int latency, String color) {
@@ -776,8 +776,8 @@ class Storage {
 class Gpu {
     private final double price;
     private final String name;
-    private final int vram;
-    private final int clockSpeed;
+    private final int vram; //video ram on card
+    private final int clockSpeed; //internal card clock speed
     private final String color;
     private final int length;
     private final int wattage;
@@ -857,7 +857,7 @@ class Psu {
     private final double price;
     private final String name;
     private final int wattage;
-    private final boolean modular;
+    private final boolean modular; //most good quality PSUs are modular
 
     Psu(double price, String name, int wattage, boolean modular) {
         this.price = price;
